@@ -1,60 +1,112 @@
+@font-face {
+    font-family: 'arcade';
+    src: url(assets/fonts/ARCADECLASSIC.TTF);
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'arcade' ;
+    font-weight: bold;
 }
+
 body{
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-}
-#screen{
-    order: inherit;
+    height: 80vh;
     display: grid;
-    grid-template-columns: 6rem 6rem 6rem 6rem;
-    gap: 6rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#screen{
+    border-radius: 10px;
+    color: azure;
+    background-color: black;
+    padding: 30px;
+    display: grid;
+}
+
+#game{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+#dashplayer{
+    color: white;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+#dashboard{
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+input {
+    width: 190px;
+    height: 28px;
+    font-size: 17px;
+}
+
+button{
+    width: 100px;
+    height: 28;
+}
+button:hover{
+    cursor: pointer;
 }
 
 .card {
     background-color: aqua;
-    width: 120px;
-    height: 200px;
+    width: 130px;
+    height: 210px;
 
-    transition: all 0.6s;
+    border-radius: 10px;
+    transition: 0.6s;
 }
+
 
 .card:hover{
+    border: 3px solid white;
     cursor: pointer;
+    
+}
+.frontCard:hover, .selected:hover{
+    border: 0px solid white;
+
 }
 
-.frontCard#card1,.frontCard#scard1, .selected#card1 ,.selected#scard1{
-    transform: rotateY(180deg);
-
-    background-image: url('Screenshot_2022-06-09-22-14-08-255_com.whatsapp.jpg');
-    background-size: 120px 200px;
-    transition: all 0.6s;
+.frontCard, .selected{
+    transform: rotateY(-180deg);
+    background-size: 100% 100%;
+}
+.frontCard{
+    transition: 0.6s;
 }
 
-.frontCard#card2,.frontCard#scard2, .selected#card2 ,.selected#scard2{
-    transform: rotateY(180deg);
 
-    background-image: url('Screenshot_2022-05-04-18-40-58-411_com.whatsapp.jpg');
-    background-size: 120px 200px;
-    transition: all 0.6s;
+.frontCard#card1,.frontCard#scard1,#card1.selected,#scard1.selected{
+    background-image: url('assets/imgs/imagem1.jpg');
 }
 
-.frontCard#card3,.frontCard#scard3, .selected#card3 ,.selected#scard3{
-    transform: rotateY(180deg);
-
-    background-image: url('Screenshot_20200410-161036_WhatsApp.jpg');
-    background-size: 120px 200px;
-    transition: all 0.6s;
+.frontCard#card2,.frontCard#scard2,#card2.selected,#scard2.selected {
+    background-image: url('assets/imgs/imagem2.jpg');
 }
 
-.frontCard#card4,.frontCard#scard4, .selected#card4 ,.selected#scard4{
-    transform: rotateY(180deg);
+.frontCard#card3,.frontCard#scard3, #card3.selected,#scard3.selected{
+    background-image: url('assets/imgs/imagem3.jpg');
+}
 
-    background-image: url('IMG_20220919_204358.jpg');
-    background-size: 120px 200px;
-    transition: all 0.6s;
+.frontCard#card4,.frontCard#scard4, #card4.selected,#scard4.selected{
+    background-image: url('assets/imgs/imagem4.jpg');
+}
+
+
+#dashboard {
+    display: flex;
+    gap: 10px;
 }
