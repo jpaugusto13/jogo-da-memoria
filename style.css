@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+#screen{
+    order: inherit;
+    display: grid;
+    grid-template-columns: 6rem 6rem 6rem 6rem;
+    gap: 6rem;
+}
+
+.card {
+    background-color: aqua;
+    width: 120px;
+    height: 200px;
+
+    transition: all 0.6s;
+}
+
+.card:hover{
+    cursor: pointer;
+}
+
+.frontCard#card1,.frontCard#scard1, .selected#card1 ,.selected#scard1{
+    transform: rotateY(180deg);
+
+    background-image: url('Screenshot_2022-06-09-22-14-08-255_com.whatsapp.jpg');
+    background-size: 120px 200px;
+    transition: all 0.6s;
+}
+
+.frontCard#card2,.frontCard#scard2, .selected#card2 ,.selected#scard2{
+    transform: rotateY(180deg);
+
+    background-image: url('Screenshot_2022-05-04-18-40-58-411_com.whatsapp.jpg');
+    background-size: 120px 200px;
+    transition: all 0.6s;
+}
+
+.frontCard#card3,.frontCard#scard3, .selected#card3 ,.selected#scard3{
+    transform: rotateY(180deg);
+
+    background-image: url('Screenshot_20200410-161036_WhatsApp.jpg');
+    background-size: 120px 200px;
+    transition: all 0.6s;
+}
+
+.frontCard#card4,.frontCard#scard4, .selected#card4 ,.selected#scard4{
+    transform: rotateY(180deg);
+
+    background-image: url('IMG_20220919_204358.jpg');
+    background-size: 120px 200px;
+    transition: all 0.6s;
+}
