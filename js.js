@@ -34,7 +34,7 @@ function mostrarPainel(player) {
     let painel = pickDashboard();
     let scores = pickScore()
     painel.innerHTML = `<div id="displayPlayer">Nome do jogador: ${player}</div><div id="stopwatch">00:00<div>`
-    scores.innerHTML = `<div id="pontos">PONTOS: 0/4</div>`
+    scores.innerHTML = `<div id="pontos">PONTOS: 0/12</div>`
 }
 
 
@@ -93,7 +93,7 @@ function confirmarCartas(index) {
 function atribuirPontos() {
     let scores = document.getElementById("pontos");
     score++
-    scores.innerHTML = `<div id="pontos">PONTOS: ${score}/4</div>`
+    scores.innerHTML = `<div id="pontos">PONTOS: ${score}/12</div>`
 }
 
 function pickScore() {
@@ -111,7 +111,7 @@ function pickDashboard() {
 function pickDificuldade() {
     let cards = Array();
     const game = pickGame();
-    for(let i = 1; i <= 4; i++) {
+    for(let i = 1; i <= 12; i++) {
         cards.push(`<div class="carta" id="carta${i}"></div>`)
     }
     let começo = cards.length + 1;
