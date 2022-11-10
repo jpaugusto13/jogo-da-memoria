@@ -32,13 +32,17 @@ body{
     gap: 10px;
 }
 
-#dashplayer{
+#dashboardPlayer{
     color: white;
+    display: flex;
+    align-items: center;
     font-size: 24px;
     margin-bottom: 12px;
 }
 
-#dashboard{
+#stopwatch{
+    font-size: 30px;
+    margin-left: auto;
 }
 
 h1{
@@ -60,48 +64,49 @@ button:hover{
     cursor: pointer;
 }
 
-.card {
+.carta {
     background-color: aqua;
-    width: 130px;
-    height: 210px;
+    width: 110px;
+    height: 200px;
 
     border-radius: 10px;
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
-
-.card:hover{
-    border: 3px solid white;
-    cursor: pointer;
+.cartaFrontal:hover, .encontrada:hover{
+    box-shadow: none 0px 0px 0px;
     
 }
-.frontCard:hover, .selected:hover{
-    border: 0px solid white;
 
+.carta:hover{
+    box-shadow: aqua 0px 0px 20px;
+    cursor: pointer;
 }
 
-.frontCard, .selected{
+.cartaFrontal, .encontrada{
     transform: rotateY(-180deg);
     background-size: 100% 100%;
 }
-.frontCard{
-    transition: 0.6s;
+
+.cartaFrontal{
+    transition: 0.4s;
 }
 
 
-.frontCard#card1,.frontCard#scard1,#card1.selected,#scard1.selected{
+.cartaFrontal#carta1,.cartaFrontal#carta2,#carta1.encontrada,#carta2.encontrada{
     background-image: url('assets/imgs/imagem1.jpg');
+    transition: all 0.6s;
 }
 
-.frontCard#card2,.frontCard#scard2,#card2.selected,#scard2.selected {
+.cartaFrontal#carta3,.cartaFrontal#carta4,#carta3.encontrada,#carta4.encontrada{
     background-image: url('assets/imgs/imagem2.jpg');
 }
 
-.frontCard#card3,.frontCard#scard3, #card3.selected,#scard3.selected{
+.cartaFrontal#carta5,.cartaFrontal#carta6,#carta5.encontrada,#carta6.encontrada{
     background-image: url('assets/imgs/imagem3.jpg');
 }
 
-.frontCard#card4,.frontCard#scard4, #card4.selected,#scard4.selected{
+.cartaFrontal#carta7,.cartaFrontal#carta8,#carta7.encontrada,#carta8.encontrada{
     background-image: url('assets/imgs/imagem4.jpg');
 }
 
