@@ -1,4 +1,5 @@
 const screen = document.getElementById('screen');
+let score = 0;
 let segundos = 0;
 let minutos = 0;
 let tempoJogo;
@@ -16,7 +17,7 @@ window.addEventListener('load', () => {
 function jogo() {
     let player = document.getElementById("player").value;
     if(player) {
-        screen.innerHTML = `<div id="dashboardPlayer"></div><div id="game"></div>`;
+        screen.innerHTML = `<div id="dashboardPlayer"></div><div id="game"></div><div id="pontos"></div>`;
         pickDificuldade()
     
         let cards = document.querySelectorAll(".carta");
@@ -31,14 +32,14 @@ function jogo() {
 
 function mostrarPainel(player) {
     let painel = pickDashboard();
+    let scores = pickScore()
     painel.innerHTML = `<div id="displayPlayer">Nome do jogador: ${player}</div><div id="stopwatch">00:00<div>`
-    
+    scores.innerHTML = `<div id="pontos">PONTOS: 0/4</div>`
 }
 
 
 
 function girarCartas(index) {
-    
     document.getElementById('carta'+index).classList.add("cartaFrontal");
     document.getElementById('carta'+index).removeAttribute("onclick");
     
@@ -75,20 +76,29 @@ function confirmarCartas(index) {
     }
     
     if(carta1.classList.contains("cartaFrontal") && carta2.classList.contains("cartaFrontal")) {
-        carta1.classList.add("encontrada");
-        carta2.classList.add("encontrada");
+        carta1.classList.add("encontrada")
+        carta2.classList.add("encontrada")
+
+        atribuirPontos();
     }
     
     let cartasEncontradas = document.querySelectorAll('.encontrada')
     let cartas = document.querySelectorAll('.carta')
     
-    console.log(cartasEncontradas.length,cartas.length)
     if(cartasEncontradas.length == cartas.length) {
         ganhar()
     }    
 }
 
+function atribuirPontos() {
+    let scores = document.getElementById("pontos");
+    score++
+    scores.innerHTML = `<div id="pontos">PONTOS: ${score}/4</div>`
+}
 
+function pickScore() {
+    return document.getElementById("pontos");
+}
 
 function pickGame() {
     return document.getElementById("game");
@@ -106,8 +116,7 @@ function pickDificuldade() {
     }
     let começo = cards.length + 1;
     let duplicarArray = cards.length*2;
-    
-    console.log(duplicarArray)
+
     for(let i = começo; i <= duplicarArray;i++) {
         cards.push(`<div class="carta" id="carta${i}"></div>`)
     }
@@ -131,11 +140,17 @@ function embaralhar() {
 
 function ganhar() {
     let interval;
+    let cards = document.querySelectorAll(".encontrada");
+
+    cards.forEach(card => {
+        card.removeAttribute("onclick")
+    })
+
     interval = setInterval(() => {
         clearInterval(tempoJogo)
         clearInterval(interval)
         alert("PARABENS VOCÊ TERMINOU EM: "+ document.getElementById('stopwatch').innerText)
-    },500)
+    },300)
 }
 
 
