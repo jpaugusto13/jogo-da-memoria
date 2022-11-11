@@ -29,6 +29,7 @@ function jogo() {
 function mostrarPainel(player) {
     let painel = pickDashboard();
     let scores = pickScore()
+<<<<<<< HEAD
     let cards = pickCards();
     let pontosFinais = cards.length/2
 
@@ -36,6 +37,10 @@ function mostrarPainel(player) {
 
     score++;
     chat.innerHTML = `${player} entrou no saguão`;
+=======
+    painel.innerHTML = `<div id="displayPlayer">Nome do jogador: ${player}</div><div id="stopwatch">00:00<div>`
+    scores.innerHTML = `<div id="pontos">PONTOS: 0/12</div>`
+>>>>>>> 1fe26d07ade6eb2851e1f2f3dbe0e0488ad600e9
 }
 
 
@@ -95,6 +100,7 @@ function confirmarCartas(index) {
     }    
 }
 
+<<<<<<< HEAD
 
 function dificuldade() {
     let cards = Array();
@@ -116,6 +122,12 @@ function dificuldade() {
     })
 
     adcionarAtributos()
+=======
+function atribuirPontos() {
+    let scores = document.getElementById("pontos");
+    score++
+    scores.innerHTML = `<div id="pontos">PONTOS: ${score}/12</div>`
+>>>>>>> 1fe26d07ade6eb2851e1f2f3dbe0e0488ad600e9
 }
 
 function embaralhar() {
@@ -202,6 +214,66 @@ function pickDashboard() {
     return document.getElementById("dashboardPlayer");
 }
 
+<<<<<<< HEAD
 function pickCards() {
     return document.querySelectorAll('.carta');
+=======
+function pickDificuldade() {
+    let cards = Array();
+    const game = pickGame();
+    for(let i = 1; i <= 12; i++) {
+        cards.push(`<div class="carta" id="carta${i}"></div>`)
+    }
+    let começo = cards.length + 1;
+    let duplicarArray = cards.length*2;
+
+    for(let i = começo; i <= duplicarArray;i++) {
+        cards.push(`<div class="carta" id="carta${i}"></div>`)
+    }
+    
+    cards.forEach(card => {
+        game.innerHTML += card;
+    })
+    
+    return cards
+}
+
+
+
+function embaralhar() {
+    let cards = document.querySelectorAll('.carta')
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * 12);
+        card.style.order = randomPos;
+    })
+}
+
+function ganhar() {
+    let interval;
+    let cards = document.querySelectorAll(".encontrada");
+
+    cards.forEach(card => {
+        card.removeAttribute("onclick")
+    })
+
+    interval = setInterval(() => {
+        clearInterval(tempoJogo)
+        clearInterval(interval)
+        alert("PARABENS VOCÊ TERMINOU EM: "+ document.getElementById('stopwatch').innerText)
+    },300)
+}
+
+
+
+function stopwatch() {
+    let cronometro = ""
+    segundos++
+    if(segundos >= 60) {
+        minutos++
+        segundos = 0
+    }
+    cronometro = `${minutos <= 9 ? '0'+minutos : minutos}:${segundos <= 9 ? '0'+segundos : segundos}`
+    document.getElementById('stopwatch').innerHTML = cronometro
+    return cronometro
+>>>>>>> 1fe26d07ade6eb2851e1f2f3dbe0e0488ad600e9
 }
