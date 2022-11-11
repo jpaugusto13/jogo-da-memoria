@@ -130,3 +130,23 @@ button:hover{
     transform: rotateY(-180deg);
     background-size: 100% 100%;
 }
+
+.cartaFrontal{
+    transition: 0.4s;
+}
+
+
+#dashboard {
+    display: flex;
+    gap: 10px;
+}
+
+#game::-webkit-scrollbar {
+    width: 5px;
+}
+  
+  
+#game::-webkit-scrollbar-thumb {
+    border-radius: 20px;      
+    background-color: #7A5C2A;
+  }
