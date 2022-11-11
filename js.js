@@ -29,18 +29,8 @@ function jogo() {
 function mostrarPainel(player) {
     let painel = pickDashboard();
     let scores = pickScore()
-<<<<<<< HEAD
-    let cards = pickCards();
-    let pontosFinais = cards.length/2
-
-    let chat = document.getElementById("spam")
-
-    score++;
-    chat.innerHTML = `${player} entrou no saguão`;
-=======
     painel.innerHTML = `<div id="displayPlayer">Nome do jogador: ${player}</div><div id="stopwatch">00:00<div>`
     scores.innerHTML = `<div id="pontos">PONTOS: 0/12</div>`
->>>>>>> 1fe26d07ade6eb2851e1f2f3dbe0e0488ad600e9
 }
 
 
@@ -100,34 +90,10 @@ function confirmarCartas(index) {
     }    
 }
 
-<<<<<<< HEAD
-
-function dificuldade() {
-    let cards = Array();
-    const game = pickGame();
-
-    for(let i = 1; i <= 24; i++) {
-        cards.push(`<div class="carta" id="carta${i}"></div>`);
-    }
-
-    let comeco = cards.length + 1;
-    let duplicaCarta = cards.length*2;
-
-    for(let i = comeco; i <= duplicaCarta;i++) {
-        cards.push(`<div class="carta" id="carta${i}"></div>`);
-    }
-    
-    cards.forEach((card) => {
-        game.innerHTML += card;
-    })
-
-    adcionarAtributos()
-=======
 function atribuirPontos() {
     let scores = document.getElementById("pontos");
     score++
     scores.innerHTML = `<div id="pontos">PONTOS: ${score}/12</div>`
->>>>>>> 1fe26d07ade6eb2851e1f2f3dbe0e0488ad600e9
 }
 
 function embaralhar() {
@@ -214,10 +180,6 @@ function pickDashboard() {
     return document.getElementById("dashboardPlayer");
 }
 
-<<<<<<< HEAD
-function pickCards() {
-    return document.querySelectorAll('.carta');
-=======
 function pickDificuldade() {
     let cards = Array();
     const game = pickGame();
@@ -275,5 +237,4 @@ function stopwatch() {
     cronometro = `${minutos <= 9 ? '0'+minutos : minutos}:${segundos <= 9 ? '0'+segundos : segundos}`
     document.getElementById('stopwatch').innerHTML = cronometro
     return cronometro
->>>>>>> 1fe26d07ade6eb2851e1f2f3dbe0e0488ad600e9
 }
