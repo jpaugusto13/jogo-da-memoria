@@ -6,10 +6,10 @@ let tempoJogo;
 
 window.addEventListener('load', () => {
     let div = "";
-    div = `<div>`;
-    div += `<h1>Jogo da Memoria</h1>`;
-    div += `<div id="dashboard"><input id="player" placeholder="Digite seu nome"><button onclick="jogo()">start</button></div>`;
-    div += `</div>`;
+    div = '<div>';
+    div += '<h1>Jogo da Memoria</h1>';
+    div += '<div id="dashboard"><input id="player" placeholder="Digite seu nome"><button id="play" onclick="jogo()">ENCONTRAR PARTIDA</button></div>';
+    div += '</div>';
 
     screen.innerHTML = div;
 })
@@ -18,6 +18,7 @@ function jogo() {
     let player = document.getElementById("player").value;
     if(player) {
         screen.innerHTML = '<div id="titulo"><h1>ESCOLHA SUA CARTA!</h1><div id="stopwatch">00:00</div></div><div id="game"></div>'
+        document.getElementById("dashmain").style.opacity = 1
 
         dificuldade()
         mostrarPainel(player)
@@ -27,6 +28,7 @@ function jogo() {
 }
 
 function mostrarPainel(player) {
+    document.getElementById("titulo").innerHTML = '<div id="titulo"><h1>ESCOLHA SUA CARTA!</h1><div id="stopwatch">00:00</div></div>'
     let painel = pickDashboard();
     let scores = pickScore()
     let cards = pickCards();
@@ -56,9 +58,10 @@ function esconderCartas() {
         cartas.forEach(card => {
             card.removeAttribute("onclick")
         })
+
         let interval;
         interval = setInterval(() => {
-            cartas.forEach((card,i) => {
+            cartas.forEach((card) => {
                 clearInterval(interval);
 
                 card.classList.remove("cartaFrontal");
@@ -78,21 +81,20 @@ function confirmarCartas(index) {
     
     index%2==0 ? carta2 = document.getElementById('carta'+(index-1)) : carta2 = document.getElementById('carta'+(index+1))
     colocarImagens(index);
-
+    
     if(carta1.classList.contains("cartaFrontal") && carta2.classList.contains("cartaFrontal")) {
         carta1.classList.add("encontrada");
         carta2.classList.add("encontrada");
-
+        
         imagensEncontradas(index,carta1,carta2);
-        atribuirPontos();
+        
+        let cartas = document.querySelectorAll(".carta");
+        let cartasEncontradas = document.querySelectorAll(".encontrada");
+
+        if(cartasEncontradas.length == cartas.length) {
+            ganhar()
+        }
     }
-    
-    let cartasEncontradas = document.querySelectorAll('.encontrada');
-    let cartas = pickCards();
-    
-    if(cartasEncontradas.length == cartas.length) {
-        ganhar();
-    }    
 }
 
 
@@ -100,7 +102,7 @@ function dificuldade() {
     let cards = Array();
     const game = pickGame();
 
-    for(let i = 1; i <= 24; i++) {
+    for(let i = 1; i <= 21 /*multiplo de 3 */; i++) {
         cards.push(`<div class="carta" id="carta${i}"></div>`);
     }
 
@@ -157,17 +159,12 @@ function adcionarAtributos() {
 
 function ganhar() {
     let interval;
-    let cards = document.querySelectorAll(".encontrada");
-    
-    cards.forEach(card => {
-        card.removeAttribute("onclick")
-    })
     
     interval = setInterval(() => {
-        clearInterval(tempoJogo)
-        clearInterval(interval)
-        alert("PARABENS VOCÊ TERMINOU EM: "+ document.getElementById('stopwatch').innerText)
-    },100)
+        clearInterval(tempoJogo);
+        clearInterval(interval);
+        alert("PARABENS VOCÊ TERMINOU EM: "+ document.getElementById('stopwatch').innerText);
+    },300);
 }
 
 function stopwatch() {
@@ -204,4 +201,31 @@ function pickDashboard() {
 
 function pickCards() {
     return document.querySelectorAll('.carta');
+}
+
+function verCartas() {
+    cards = pickCards();
+    let interval;
+
+    cards.forEach(card => {
+        card.classList.add("cartaFrontal");
+        card.removeAttribute("onclick")
+    });
+
+    for(let i = 1;i<=cards.length;i++){
+        let carta1;
+        let carta2;
+        if(i%2!=0){
+            carta1 = document.getElementById("carta"+i)
+            carta2 = document.getElementById("carta"+Number(i+1))
+            console.log(carta1,carta2)
+            imagensEncontradas(i,carta1,carta2)
+        }
+    }
+
+    interval = setInterval(() => {
+        clearInterval(interval)
+        adcionarAtributos()
+        esconderCartas()
+    },2000)
 }
